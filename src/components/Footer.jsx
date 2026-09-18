@@ -8,9 +8,9 @@ export default function Footer({ onOpenLinkTree }) {
   };
 
   return (
-    <footer className="bg-[#182115] text-emerald-100/80 pt-16 pb-12 border-t border-[#2d3a27]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-14 border-b border-white/10">
+    <footer className="bg-[#182115] text-emerald-100/80 pt-12 sm:pt-16 pb-10 sm:pb-12 border-t border-[#2d3a27] overflow-hidden w-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full box-border">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-8 pb-10 sm:pb-14 border-b border-white/10 w-full">
           {/* Col 1: Brand & Bio */}
           <div className="lg:col-span-4 space-y-4">
             <img 
@@ -138,10 +138,14 @@ export default function Footer({ onOpenLinkTree }) {
                 <MapPin className="w-4 h-4 text-[#839A74] shrink-0 mt-0.5" />
                 <span>Av. Indianópolis, 529 - Moema<br />São Paulo - SP, 04063-001</span>
               </p>
-              <p className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-[#839A74] shrink-0" />
-                <span>(11) 5081-9600 • (11) 4328-1367</span>
-              </p>
+              <div className="flex items-start gap-2">
+                <Phone className="w-4 h-4 text-[#839A74] shrink-0 mt-0.5" />
+                <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5">
+                  <a href="tel:+551150819600" className="hover:text-white transition-colors">(11) 5081-9600</a>
+                  <span>•</span>
+                  <a href="tel:+551143281367" className="hover:text-white transition-colors">(11) 4328-1367</a>
+                </div>
+              </div>
               <p className="flex items-center gap-2">
                 <MessageCircle className="w-4 h-4 text-[#25D366] shrink-0" />
                 <a href="https://wa.me/5511995466272" target="_blank" rel="noopener noreferrer" className="text-[#25D366] font-bold hover:underline">
@@ -157,9 +161,9 @@ export default function Footer({ onOpenLinkTree }) {
         </div>
 
         {/* Bottom Bar: Responsabilidade Técnica & Copyright */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-emerald-100/50">
-          <div className="text-center sm:text-left space-y-0.5">
-            <p className="font-semibold text-emerald-100/80">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-emerald-100/50 w-full box-border">
+          <div className="text-center sm:text-left space-y-0.5 max-w-full">
+            <p className="font-semibold text-emerald-100/80 break-words leading-relaxed">
               Fertivitro Centro de Reprodução Humana • Diretor Clínico: Dr. Luiz Eduardo Albuquerque (CRM-SP 61.351)
             </p>
             <p>

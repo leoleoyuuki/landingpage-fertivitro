@@ -20,7 +20,7 @@ export default function CookieNotice() {
   if (!visible) return null;
 
   return (
-    <div className="fixed bottom-4 left-4 z-40 max-w-sm bg-white/95 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-stone-200 text-xs text-slate-700 animate-in fade-in slide-in-from-bottom-3 duration-300">
+    <div className="fixed bottom-4 left-3 right-3 sm:left-4 sm:right-auto z-40 max-w-full sm:max-w-sm bg-white/95 backdrop-blur-md p-3.5 sm:p-4 rounded-2xl shadow-xl border border-stone-200 text-xs text-slate-700 animate-in fade-in slide-in-from-bottom-3 duration-300 box-border">
       <div className="flex items-start gap-3">
         <Shield className="w-5 h-5 text-[#839A74] shrink-0 mt-0.5" />
         <div className="space-y-2">

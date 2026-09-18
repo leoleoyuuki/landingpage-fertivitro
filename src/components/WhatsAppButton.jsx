@@ -5,7 +5,7 @@ export default function WhatsAppButton() {
   const [showTooltip, setShowTooltip] = useState(true);
 
   return (
-    <div className="fixed bottom-5 right-5 z-40 flex items-center gap-3">
+    <div className="fixed bottom-4 right-4 sm:bottom-5 sm:right-5 z-40 flex items-center gap-3">
       {showTooltip && (
         <div className="hidden sm:flex items-center gap-2 px-3.5 py-2 rounded-2xl bg-white shadow-xl border border-stone-200 text-xs font-semibold text-slate-800 animate-in fade-in slide-in-from-right-4 duration-300">
           <span>Olá! Posso tirar suas dúvidas sobre tratamentos?</span>

@@ -71,7 +71,7 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#FAF9F5] text-slate-800 antialiased font-sans">
+    <div className="min-h-screen flex flex-col bg-[#FAF9F5] text-slate-800 antialiased font-sans w-full max-w-full overflow-x-hidden">
       {/* Top utility bar */}
       <TopBar onOpenLinkTree={navigateToLinkTree} />
 
@@ -82,7 +82,7 @@ export default function App() {
       />
 
       {/* Main content flow */}
-      <main className="flex-1">
+      <main className="flex-1 w-full max-w-full overflow-x-hidden">
         {/* Hero Section with Dynamic Slides and Real Photos */}
         <Hero onOpenAppointmentModal={() => setAppointmentModalOpen(true)} />
 

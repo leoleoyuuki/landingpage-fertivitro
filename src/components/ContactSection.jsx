@@ -33,24 +33,24 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contato" className="py-20 sm:py-28 bg-[#FAF9F5] relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+    <section id="contato" className="py-16 sm:py-28 bg-[#FAF9F5] relative overflow-hidden w-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full box-border">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <span className="text-xs font-bold uppercase tracking-wider text-[#687e5a] bg-[#e8efe4] px-3.5 py-1 rounded-full">
             Agendamento & Localização
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 mb-4">
+          <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 mt-3 mb-4">
             Entre em Contato com a Fertivitro
           </h2>
-          <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
+          <p className="text-sm sm:text-lg text-slate-600 leading-relaxed">
             Estamos prontos para acolher você. Agende sua consulta presencial em nossa clínica em Moema ou através de Telemedicina com nossos especialistas.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-12 gap-10 lg:gap-12">
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 w-full">
           {/* Left Column: Form */}
-          <div className="lg:col-span-6 bg-white p-7 sm:p-9 rounded-3xl shadow-lg border border-stone-200/80">
-            <h3 className="text-xl font-bold text-slate-900 mb-2">
+          <div className="lg:col-span-6 bg-white p-5 sm:p-9 rounded-2xl sm:rounded-3xl shadow-lg border border-stone-200/80 box-border w-full">
+            <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-2">
               Solicitar Agendamento
             </h3>
             <p className="text-xs sm:text-sm text-slate-500 mb-6">
@@ -161,10 +161,10 @@ export default function ContactSection() {
 
                 <button
                   type="submit"
-                  className="w-full py-4 rounded-xl bg-[#839A74] hover:bg-[#687e5a] text-white font-bold text-sm shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 transform active:scale-[0.99]"
+                  className="w-full py-3.5 px-3 rounded-xl bg-[#839A74] hover:bg-[#687e5a] text-white font-bold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 transform active:scale-[0.99] text-center"
                 >
-                  <Send className="w-4 h-4" />
-                  <span>Enviar Solicitação de Agendamento</span>
+                  <Send className="w-4 h-4 shrink-0" />
+                  <span>Solicitar Agendamento de Consulta</span>
                 </button>
 
                 <p className="text-[11px] text-center text-slate-400 mt-2">
@@ -175,10 +175,10 @@ export default function ContactSection() {
           </div>
 
           {/* Right Column: Address, Hours & Map */}
-          <div className="lg:col-span-6 flex flex-col justify-between space-y-6">
-            <div className="bg-white p-7 rounded-3xl shadow-xs border border-stone-200/80 space-y-5">
-              <h4 className="text-lg font-bold text-slate-900 flex items-center gap-2">
-                <Building2 className="w-5 h-5 text-[#839A74]" />
+          <div className="lg:col-span-6 flex flex-col justify-between space-y-6 w-full box-border">
+            <div className="bg-white p-5 sm:p-7 rounded-2xl sm:rounded-3xl shadow-xs border border-stone-200/80 space-y-5 box-border w-full">
+              <h4 className="text-base sm:text-lg font-bold text-slate-900 flex items-center gap-2">
+                <Building2 className="w-5 h-5 text-[#839A74] shrink-0" />
                 <span>Fertivitro Moema</span>
               </h4>
 
@@ -187,7 +187,7 @@ export default function ContactSection() {
                   <MapPin className="w-4 h-4 text-[#839A74] shrink-0 mt-0.5" />
                   <div>
                     <strong className="block text-slate-900">Endereço:</strong>
-                    <span>Av. Indianópolis, 529 - Moema, São Paulo - SP, CEP 04063-001</span>
+                    <span className="break-words">Av. Indianópolis, 529 - Moema, São Paulo - SP, CEP 04063-001</span>
                     <span className="block text-xs text-slate-500 mt-0.5">Estacionamento com manobrista na clínica</span>
                   </div>
                 </div>
@@ -196,7 +196,7 @@ export default function ContactSection() {
                   <Phone className="w-4 h-4 text-[#839A74] shrink-0 mt-0.5" />
                   <div>
                     <strong className="block text-slate-900">Telefones:</strong>
-                    <div className="flex flex-wrap gap-x-3 gap-y-1 mt-0.5">
+                    <div className="flex flex-wrap items-center gap-x-2 gap-y-1 mt-0.5">
                       <a href="tel:+551150819600" className="hover:text-[#687e5a] font-semibold">(11) 5081-9600</a>
                       <span>•</span>
                       <a href="tel:+551143281367" className="hover:text-[#687e5a] font-semibold">(11) 4328-1367</a>
@@ -223,10 +223,9 @@ export default function ContactSection() {
                   <Clock className="w-4 h-4 text-[#839A74] shrink-0 mt-0.5" />
                   <div>
                     <strong className="block text-slate-900">Horários de Funcionamento:</strong>
-                    <p className="text-xs text-slate-600 mt-0.5">
-                      Recepção: Seg a Sex das 7h às 19h | Sábado das 8h às 12h<br />
-                      Consultas Presenciais: Seg a Sex das 14h às 18h<br />
-                      Telemedicina (Virtual): Seg a Sex das 14h às 19h
+                    <p className="text-xs text-slate-600 mt-0.5 leading-relaxed">
+                      Recepção: Seg a Sex das 7h às 19h | Sáb das 8h às 12h<br />
+                      Consultas: Seg a Sex das 14h às 18h | Telemedicina até 19h
                     </p>
                   </div>
                 </div>
@@ -234,8 +233,8 @@ export default function ContactSection() {
             </div>
 
             {/* Google Maps Embed & Route CTA */}
-            <div className="space-y-3">
-              <div className="rounded-3xl overflow-hidden shadow-xs border border-stone-200/80 aspect-[16/9] min-h-[220px]">
+            <div className="space-y-3 w-full box-border">
+              <div className="rounded-2xl sm:rounded-3xl overflow-hidden shadow-xs border border-stone-200/80 aspect-[16/9] min-h-[200px] sm:min-h-[220px] w-full">
                 <iframe
                   title="Localização Fertivitro Moema"
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.029092403214!2d-46.657098324599815!3d-23.603289563134176!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5a1666d711dd%3A0x85caad9c0e7d1a61!2sFertivitro!5e0!3m2!1spt-BR!2sbr!4v1747316478090!5m2!1spt-BR!2sbr"
@@ -251,10 +250,10 @@ export default function ContactSection() {
               <button
                 onClick={() => setGpsModalOpen(true)}
                 type="button"
-                className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-2xl bg-white hover:bg-stone-50 border border-stone-200 text-slate-800 font-bold text-sm shadow-xs hover:shadow-md transition-all cursor-pointer"
+                className="w-full flex items-center justify-center gap-2 py-3 px-3 rounded-2xl bg-white hover:bg-stone-50 border border-stone-200 text-slate-800 font-bold text-xs sm:text-sm shadow-xs hover:shadow-md transition-all cursor-pointer text-center"
               >
-                <Navigation className="w-4 h-4 text-blue-600" />
-                <span>Traçar Rota no GPS (Google Maps ou Waze)</span>
+                <Navigation className="w-4 h-4 text-blue-600 shrink-0" />
+                <span>Traçar Rota (Google Maps ou Waze)</span>
               </button>
             </div>
           </div>
