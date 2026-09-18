@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { 
   Star, 
@@ -25,6 +25,34 @@ export default function LinkTreePage({ onGoToLandingPage }) {
   const [copied, setCopied] = useState(false);
   const [vcardSaved, setVcardSaved] = useState(false);
   const [gpsModalOpen, setGpsModalOpen] = useState(false);
+
+  // Harmonize safe-area, status bar, and HTML/Body background with page dark green #182215
+  useEffect(() => {
+    const prevHtmlBg = document.documentElement.style.backgroundColor;
+    const prevBodyBg = document.body.style.backgroundColor;
+
+    // Apply exact top gradient color to body and root HTML
+    document.documentElement.style.backgroundColor = '#182215';
+    document.body.style.backgroundColor = '#182215';
+
+    // Update browser theme-color for mobile notch / status bar
+    let themeMeta = document.querySelector('meta[name="theme-color"]');
+    const prevThemeColor = themeMeta ? themeMeta.getAttribute('content') : '#FAF9F5';
+    if (!themeMeta) {
+      themeMeta = document.createElement('meta');
+      themeMeta.name = 'theme-color';
+      document.head.appendChild(themeMeta);
+    }
+    themeMeta.setAttribute('content', '#182215');
+
+    return () => {
+      document.documentElement.style.backgroundColor = prevHtmlBg || '#FAF9F5';
+      document.body.style.backgroundColor = prevBodyBg || '#FAF9F5';
+      if (themeMeta) {
+        themeMeta.setAttribute('content', prevThemeColor || '#FAF9F5');
+      }
+    };
+  }, []);
 
   // Generate and download .vcf vCard file
   const handleSaveContact = () => {
@@ -64,7 +92,10 @@ END:VCARD`;
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#182215] via-[#243020] to-[#FAF9F5] text-slate-800 flex flex-col items-center px-4 py-8 sm:py-12 relative overflow-hidden font-sans">
+    <div 
+      style={{ paddingTop: 'calc(env(safe-area-inset-top, 0px) + 1.25rem)' }}
+      className="min-h-screen bg-gradient-to-b from-[#182215] via-[#243020] to-[#FAF9F5] text-slate-800 flex flex-col items-center px-4 pb-8 sm:pb-12 relative overflow-hidden font-sans"
+    >
       {/* Background ambient lighting */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-[#839A74]/15 rounded-full blur-3xl pointer-events-none"></div>
 

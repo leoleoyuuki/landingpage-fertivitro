@@ -20,7 +20,8 @@
   --color-sand-300: #ded6c2;
 }
 
-body {
+html, body {
+  min-height: 100%;
   font-family: var(--font-sans);
   overflow-x: hidden;
 }
