@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { Phone, MessageCircle, Mail, MapPin, Clock, Send, CheckCircle, Video, Building2 } from 'lucide-react';
+import { Phone, MessageCircle, Mail, MapPin, Clock, Send, CheckCircle, Video, Building2, Navigation } from 'lucide-react';
+import GpsModal from './GpsModal';
 
 export default function ContactSection() {
+  const [gpsModalOpen, setGpsModalOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -231,22 +233,38 @@ export default function ContactSection() {
               </div>
             </div>
 
-            {/* Google Maps Embed */}
-            <div className="rounded-3xl overflow-hidden shadow-xs border border-stone-200/80 aspect-[16/9] min-h-[220px]">
-              <iframe
-                title="Localização Fertivitro Moema"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.029092403214!2d-46.657098324599815!3d-23.603289563134176!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5a1666d711dd%3A0x85caad9c0e7d1a61!2sFertivitro!5e0!3m2!1spt-BR!2sbr!4v1747316478090!5m2!1spt-BR!2sbr"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              ></iframe>
+            {/* Google Maps Embed & Route CTA */}
+            <div className="space-y-3">
+              <div className="rounded-3xl overflow-hidden shadow-xs border border-stone-200/80 aspect-[16/9] min-h-[220px]">
+                <iframe
+                  title="Localização Fertivitro Moema"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.029092403214!2d-46.657098324599815!3d-23.603289563134176!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5a1666d711dd%3A0x85caad9c0e7d1a61!2sFertivitro!5e0!3m2!1spt-BR!2sbr!4v1747316478090!5m2!1spt-BR!2sbr"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
+
+              <button
+                onClick={() => setGpsModalOpen(true)}
+                type="button"
+                className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-2xl bg-white hover:bg-stone-50 border border-stone-200 text-slate-800 font-bold text-sm shadow-xs hover:shadow-md transition-all cursor-pointer"
+              >
+                <Navigation className="w-4 h-4 text-blue-600" />
+                <span>Traçar Rota no GPS (Google Maps ou Waze)</span>
+              </button>
             </div>
           </div>
         </div>
       </div>
+
+      <GpsModal
+        isOpen={gpsModalOpen}
+        onClose={() => setGpsModalOpen(false)}
+      />
     </section>
   );
 }

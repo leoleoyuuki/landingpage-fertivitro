@@ -18,11 +18,13 @@ import {
   ChevronRight,
   Compass
 } from 'lucide-react';
-import { InstagramIcon, FacebookIcon, YoutubeIcon, LinkedinIcon } from './SocialIcons';
+import { InstagramIcon, FacebookIcon, YoutubeIcon, LinkedinIcon, GoogleMapsIcon, WazeIcon } from './SocialIcons';
+import GpsModal from './GpsModal';
 
 export default function LinkTreePage({ onGoToLandingPage }) {
   const [copied, setCopied] = useState(false);
   const [vcardSaved, setVcardSaved] = useState(false);
+  const [gpsModalOpen, setGpsModalOpen] = useState(false);
 
   // Generate and download .vcf vCard file
   const handleSaveContact = () => {
@@ -210,15 +212,14 @@ END:VCARD`;
             <ChevronRight className="w-5 h-5 text-slate-400 group-hover:text-[#839A74] group-hover:translate-x-1 transition-all" />
           </motion.button>
 
-          {/* 3. Rotas até o Endereço (Google Maps / Waze) */}
-          <motion.a
-            href="https://www.google.com/maps/dir/?api=1&destination=Fertivitro+-+Av.+Indian%C3%B3polis,+529+-+Moema,+S%C3%A3o+Paulo+-+SP,+04063-001"
-            target="_blank"
-            rel="noopener noreferrer"
+          {/* 3. Rotas até o Endereço (Google Maps ou Waze) */}
+          <motion.button
+            onClick={() => setGpsModalOpen(true)}
+            type="button"
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.2 }}
-            className="group relative flex items-center justify-between p-4 rounded-2xl bg-white hover:bg-stone-50 border border-stone-200 shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
+            className="w-full group relative flex items-center justify-between p-4 rounded-2xl bg-white hover:bg-blue-50/40 border border-stone-200 shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 text-left cursor-pointer"
           >
             <div className="flex items-center gap-3.5">
               <div className="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-600 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
@@ -230,16 +231,26 @@ END:VCARD`;
                     Rotas até a Clínica
                   </span>
                   <span className="text-[10px] bg-blue-100 text-blue-800 font-bold px-1.5 py-0.5 rounded">
-                    Moema, SP
+                    Maps / Waze
                   </span>
                 </div>
                 <p className="text-xs text-slate-500 line-clamp-1 mt-0.5">
-                  Av. Indianópolis, 529 • Abrir no GPS / Waze
+                  Av. Indianópolis, 529 • Escolher Google Maps ou Waze
                 </p>
               </div>
             </div>
-            <ChevronRight className="w-5 h-5 text-slate-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all" />
-          </motion.a>
+            <div className="flex items-center gap-1.5">
+              <div className="hidden sm:flex items-center gap-1 opacity-75 group-hover:opacity-100 transition-opacity">
+                <div className="w-5 h-5 rounded-full bg-white shadow-2xs border border-stone-100 flex items-center justify-center p-0.5">
+                  <GoogleMapsIcon className="w-3.5 h-3.5" />
+                </div>
+                <div className="w-5 h-5 rounded-full bg-white shadow-2xs border border-stone-100 flex items-center justify-center p-0.5">
+                  <WazeIcon className="w-3.5 h-3.5" />
+                </div>
+              </div>
+              <ChevronRight className="w-5 h-5 text-slate-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all" />
+            </div>
+          </motion.button>
 
           {/* 4. Link para a Landing Page Oficial */}
           <motion.button
@@ -390,6 +401,12 @@ END:VCARD`;
           </div>
         </div>
       </div>
+
+      {/* GPS App Selection Bottom Sheet / Modal */}
+      <GpsModal
+        isOpen={gpsModalOpen}
+        onClose={() => setGpsModalOpen(false)}
+      />
     </div>
   );
 }

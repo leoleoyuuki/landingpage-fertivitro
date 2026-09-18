@@ -33,3 +33,30 @@ export function LinkedinIcon({ className = "w-4 h-4" }) {
     </svg>
   );
 }
+
+export function GoogleMapsIcon({ className = "w-6 h-6" }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none">
+      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" fill="#EA4335" />
+      <path d="M12 2C8.13 2 5 5.13 5 9c0 2.38 1.19 4.96 2.88 7.37L12 11V2z" fill="#4285F4" />
+      <path d="M12 20.35s4.25-5.24 6.12-9.35H12v9.35z" fill="#34A853" />
+      <path d="M18.12 11c.56-1.2.88-2.54.88-3.95 0-.71-.08-1.39-.24-2.05L12 11h6.12z" fill="#FBBC04" />
+      <circle cx="12" cy="9" r="3" fill="#FFFFFF" />
+      <circle cx="12" cy="9" r="1.5" fill="#4285F4" />
+    </svg>
+  );
+}
+
+export function WazeIcon({ className = "w-6 h-6" }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none">
+      <circle cx="12" cy="12" r="11" fill="#33CCFF" />
+      <path d="M12 5.5C8.41 5.5 5.5 8.41 5.5 12c0 1.63.6 3.12 1.6 4.27l-.8 2.33 2.44-.73c1.01.65 2.21 1.03 3.51 1.03 3.59 0 6.5-2.91 6.5-6.5S15.84 5.5 12 5.5z" fill="#FFFFFF" />
+      <circle cx="9.5" cy="11" r="1.2" fill="#2C3E50" />
+      <circle cx="14.5" cy="11" r="1.2" fill="#2C3E50" />
+      <path d="M9.5 14.2c.8 1.1 2.1 1.6 3 1.6s2.2-.5 3-1.6" stroke="#2C3E50" strokeWidth="1.2" strokeLinecap="round" />
+      <circle cx="8" cy="18.5" r="1.5" fill="#2C3E50" />
+      <circle cx="16" cy="18.5" r="1.5" fill="#2C3E50" />
+    </svg>
+  );
+}
