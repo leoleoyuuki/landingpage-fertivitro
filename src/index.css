@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", "Manrope", sans-serif;
+  --font-heading: "Manrope", "Plus Jakarta Sans", sans-serif;
+  --color-fertigreen-50: #f5f8f3;
+  --color-fertigreen-100: #e8efe4;
+  --color-fertigreen-200: #d2e0cb;
+  --color-fertigreen-300: #b3cca8;
+  --color-fertigreen-400: #91b383;
+  --color-fertigreen-500: #839a74;
+  --color-fertigreen-600: #637b54;
+  --color-fertigreen-700: #4e6143;
+  --color-fertigreen-800: #414f38;
+  --color-fertigreen-900: #374230;
+  --color-fertigreen-950: #1b2317;
+  --color-sand-50: #faf9f6;
+  --color-sand-100: #f5f3ec;
+  --color-sand-200: #ece7db;
+  --color-sand-300: #ded6c2;
+}
+
+body {
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+/* Custom smooth scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1eb;
+}
+::-webkit-scrollbar-thumb {
+  background: #839a74;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #637b54;
+}
