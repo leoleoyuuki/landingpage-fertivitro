@@ -1,27 +1,29 @@
-import React, { wustState } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Navigation, Copy, Check, ExternalLink, MapPin } from 'lucide-react';
 import { GoogleMapsIcon, WazeIcon } from './SocialIcons';
 
 export default function GpsModal({ isOpen, onClose }) {
-  const [copied, setCopied] = wustState(false);
+  const [copied, setCopied] = useState(false);
 
   if (!isOpen) return null;
 
-  const destinationAddress = "Av. Indianópolis, 529 - Moema, São Paulo - SP, 04063-001";
-  const googleMapsUrl = "https://www.google.com/maps/dir/?api=1&destination=Fertivitro+-+Av.+Indian%C3%B3polis,+529+-+Moema,+S%C3%B3o+Paulo&destination_place_id=ChIJ3RHXZhZa5pQRyRreDpytyoU";
-  const wazeUrl = "https://waze.com/ul?ll=-23.603368,-46.654475&navigate=yes";
+  const destinationAddress = 'Av. Indian?polis, 529 - Moema, S?o Paulo - SP, 04063-001';
+  const googleMapsUrl = 'https://www.google.com/maps/dir/?api=1&destination=Fertivitro+-+Av.+Indian%C3%B3polis,+529+-+Moema,+S%C3%A3o+Paulo&destination_place_id=ChIJ3RHXZhZa5pQRyRreDpytyoU';
+  const wazeUrl = 'https://waze.com/ul?ll=-23.603368,-46.654475&navigate=yes';
 
   const handleCopyAddress = () => {
-    navigator.clipboard.writeText(destinationAddress);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2500);
+    if (typeof navigator !== 'undefined' && navigator.clipboard) {
+      navigator.clipboard.writeText(destinationAddress);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2500);
+    }
   };
 
   const handleOpenWaze = () => {
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    const isMobile = typeof navigator !== 'undefined' && /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     if (isMobile) {
-      window.location.href = "waze://?ll=-23.603368,-46.654475&navigate=yes";
+      window.location.href = 'waze://?ll=-23.603368,-46.654475&navigate=yes';
       setTimeout(() => {
         window.open(wazeUrl, '_blank');
       }, 600);
@@ -51,11 +53,11 @@ export default function GpsModal({ isOpen, onClose }) {
 
         {/* Modal / Bottom Sheet */}
         <motion.div
-          initial={{ y: "100%", opacity: 0.5 }}
+          initial={{ y: '100%', opacity: 0.5 }}
           animate={{ y: 0, opacity: 1 }}
-          exit={{ y: "100%", opacity: 0 }}
-          transition={{ type: "spring", damping: 28, stiffness: 320 }}
-          className="relative wfull max-w-md bg-white rounded-t-3xl sm:rounded-3xl shadow-2xl p-6 z-10 overflow-hidden border-t sm:border border-stone-200"
+          exit={{ y: '100%', opacity: 0 }}
+          transition={{ type: 'spring', damping: 28, stiffness: 320 }}
+          className="relative w-full max-w-md bg-white rounded-t-3xl sm:rounded-3xl shadow-2xl p-6 z-10 overflow-hidden border-t sm:border border-stone-200"
         >
           {/* Mobile Drag Indicator Handle */}
           <div className="w-12 h-1.5 bg-stone-300 rounded-full mx-auto mb-4 sm:hidden" />
@@ -63,7 +65,7 @@ export default function GpsModal({ isOpen, onClose }) {
           {/* Close button */}
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 p-2 rounded-full text-stone-400 hover:text-stone-700 hover:bg-stone-100 transition-colors"
+            className="absolute top-4 right-4 p-2 rounded-full text-stone-400 hover:text-stone-700 hover:bg-stone-100 transition-colors cursor-pointer"
             aria-label="Fechar"
           >
             <X className="w-5 h-5" />
@@ -73,14 +75,14 @@ export default function GpsModal({ isOpen, onClose }) {
           <div className="text-center sm:text-left mb-5">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-800 text-xs font-bold mb-2">
               <Navigation className="w-3.5 h-3.5 text-blue-600" />
-              <span>Navegação & Rotas</span>
+              <span>Navega??o & Rotas</span>
             </div>
             <h3 className="text-xl font-extrabold text-slate-900 tracking-tight">
-              Como deseja ir até a Fertivitro?
+              Como deseja ir at? a Fertivitro?
             </h3>
             <p className="text-xs text-slate-500 mt-1 flex items-center justify-center sm:justify-start gap-1">
               <MapPin className="w-3 h-3 text-[#839A74] shrink-0" />
-              <span className="line-clamp-1">Av. Indianópolis, 529 - Moema, São Paulo</span>
+              <span className="line-clamp-1">Av. Indian?polis, 529 - Moema, S?o Paulo</span>
             </p>
           </div>
 
@@ -129,11 +131,11 @@ export default function GpsModal({ isOpen, onClose }) {
                       Waze
                     </span>
                     <span className="text-[10px] bg-sky-100 text-sky-800 font-bold px-1.5 py-0.5 rounded">
-                      Trânsito ao va�ټ
+                      Tr?nsito ao vivo
                     </span>
                   </div>
                   <p className="text-xs text-slate-500 mt-0.5">
-                    Navegar com alertas de trâfego e rotas
+                    Navegar com alertas de tr?fego e rotas
                   </p>
                 </div>
               </div>
@@ -151,12 +153,12 @@ export default function GpsModal({ isOpen, onClose }) {
               {copied ? (
                 <>
                   <Check className="w-4 h-4 text-emerald-600" />
-                  <span className="text-emerald-700 font-bold">Endereço Copiado!</span>
+                  <span className="text-emerald-700 font-bold">Endere?o Copiado!</span>
                 </>
               ) : (
                 <>
                   <Copy className="w-3.5 h-3.5 text-slate-500" />
-                  <span>Copiar Endereço Completo</span>
+                  <span>Copiar Endere?o Completo</span>
                 </>
               )}
             </button>
